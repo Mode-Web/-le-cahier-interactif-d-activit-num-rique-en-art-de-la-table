@@ -6,9 +6,23 @@ const urlsToCache = [
   '/main.js',
   '/icons/icon-192.png',
   '/icons/icon-512.png'
+  'index.html',
+  'style.css',
+  'main.js',
+  'manifest.json',
+  'assets/logo.png',
+  'assets/logo.jpeg',
+  'assets/photo1.jpeg',
+  'assets/photo5.jpeg',
+  'assets/photo6.jpeg',
+  'assets/photo7.jpeg',
+  'icons/icon-192.png',
+  'icons/icon-512.png',
+  // الأيقونات الخارجية المستخدمة في المنتدى
+  'https://api.iconify.design/mdi/account-question-outline.svg',
+  'https://api.iconify.design/mdi/account-tie-outline.svg'
 ];
 
-// تثبيت الخدمة وتخزين الملفات
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME).then(cache => {
@@ -17,7 +31,6 @@ self.addEventListener('install', event => {
   );
 });
 
-// العمل بدون اتصال (offline)
 self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request)
