@@ -10,12 +10,14 @@ const urlsToCache = [
   'style.css',
   'main.js',
   'manifest.json',
+  'dashboard.html',
   'assets/logo.png',
   'assets/logo.jpeg',
   'assets/photo1.jpeg',
   'assets/photo5.jpeg',
   'assets/photo6.jpeg',
   'assets/photo7.jpeg',
+  // يجب إضافة جميع الصور ومقاطع الفيديو الأخرى هنا
   'icons/icon-192.png',
   'icons/icon-512.png',
   // الأيقونات الخارجية المستخدمة في المنتدى
