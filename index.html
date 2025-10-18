@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cahier Interactif</title>
+<link rel="icon" type="image/x-icon" href="assets/logo.jpeg">
+<link rel="stylesheet" href="style.css">
+</head>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#2f4d6a">
+<body>
+
+<header>
+  <img src="assets/logo.png" alt="Logo Cahier Interactif" class="logo">
+
+  <h2 class="site-title">
+    Cahier Interactif d’Activités Numériques en Art de la Table
+  </h2>
+</header>
+<section class="header-images">
+  <img src="assets/photo1.jpeg" alt="Illustration 1">
+</section>
+<main>
+
+    <h1>
+       Le Cahier interactif d'activités numériques en art de la table  Signé <strong style="color: #4caf50;">M. Yousfi Imad Eddine</strong>, enseignant formateur en Art de la Table, vise à moderniser et faciliter la formation professionnelle.
+    </h1>
+
+    <h2 class="platform-info">
+      La plateforme <span style="color: #3062a7;">“Numéritable”</span> propose deux niveaux d'accès :
+    </h2>
+
+    <div class="access-levels">
+        <section class="access free-access">
+            <h3>🔑 1. Accès gratuit </h3>
+            <p>Pour découvrir la plateforme. L’accès gratuit comprend :</p>
+            <ul>
+                <li>Inscription et création d’un compte</li>
+                <li>Accès à quelques fiches techniques de base (ex: règles d’hygiène de base)</li>
+                <li>Vidéos d’introduction et mini-quiz de démonstration</li>
+                <li>Consultation d’extraits de cours dans chaque module</li>
+            </ul>
+            <p><strong>🎯 Objectif :</strong> permettre aux stagiaires et enseignants de tester la plateforme avant de s’abonner.</p>
+        </section>
+
+        <section class="access paid-access">
+            <h3>💳 2. Accès payant (abonnement complet)</h3>
+            <p>Pour débloquer l’ensemble des contenus :</p>
+            <ul>
+                <li>Tous les modules pédagogiques (Techniques de service, Mise en place, Hygiène et sécurité)</li>
+                <li>Fiches techniques détaillées, activités interactives et exercices pratiques</li>
+                <li>Accès aux quiz d’évaluation et au suivi de progression</li>
+                <li>Ressources complémentaires réservées aux enseignants (supports de cours, suggestions d’activités)</li>
+            </ul>
+
+            <h4>💰 Procédure d’abonnement et de paiement</h4>
+            <ol>
+                <li>Cliquez sur <strong>“S’abonner”</strong> depuis la page d’accueil.</li>
+                <li>Remplissez le formulaire d’inscription (Nom, Prénom, e-mail, rôle : stagiaire ou enseignant).</li>
+                <li>Choisissez une formule d’abonnement (mensuelle, trimestrielle ou annuelle).</li>
+                <li>Paiement sécurisé :
+                    <ul>
+                        <li>Par carte bancaire algérienne (Edahabia, CIB)</li>
+                        <li>Ou par paiement mobile / code QR</li>
+                    </ul>
+                </li>
+                <li>Une fois le paiement validé, l’accès complet est activé et vous recevez un e-mail de confirmation.</li>
+            </ol>
+
+            <h4>🎁 Offre spéciale de lancement</h4>
+            <p>Pour encourager l’adoption de la plateforme :</p>
+            <ul>
+                <li>Les 10 premiers abonnés bénéficieront de :
+                    <ul>
+                        <li>🔹 Réduction de 30 % sur le tarif de la première année</li>
+                        <li>🔹 Accès anticipé aux nouvelles mises à jour</li>
+                        <li>🔹 Certificat de reconnaissance comme “Membre pionnier de la plateforme NumériTable”</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+    </div>
+
+    <div class="login-container">
+        <div class="login-box">
+            <h3>Connexion Stagiaires</h3>
+            <form action="dashboard_stagiaire.html" method="POST">
+                <input type="text" name="username" placeholder="Nom d'utilisateur" required>
+                <input type="password" name="password" placeholder="Mot de passe" required>
+                <button type="submit">Se connecter</button>
+            </form>
+        </div>
+
+        <div class="login-box">
+            <h3>Connexion Enseignants</h3>
+            <form action="dashboard_enseignant.html" method="POST">
+                <input type="text" name="username" placeholder="Nom d'utilisateur" required>
+                <input type="password" name="password" placeholder="Mot de passe" required>
+                <button type="submit">Se connecter</button>
+            </form>
+
+        </div>
+    <button class="dashboard-btn" onclick="goToDashboard()">Accéder au tableau de bord</button>
+
+    </div>
+</main>
+<button id="installButton" style="
+  display:none;
+  background-color:#2f4d6a;
+  color:white;
+  padding:12px 20px;
+  border:none;
+  border-radius:8px;
+  font-size:16px;
+  cursor:pointer;
+">
+  📲 تثبيت التطبيق
+</button>
+
+
+<script>
+function goToDashboard() {
+  window.location.href = "dashboard.html";
+}
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('service-worker.js')
+    .then(() => console.log('✅ Service Worker Registered'))
+    .catch(error => console.log('❌ Registration failed:', error));
+}
+</script>
+<script>
+let deferredPrompt;
+const installButton = document.getElementById('installButton');
+
+// حدث يظهر عند توفر إمكانية التثبيت
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  installButton.style.display = 'block'; // عرض الزر
+});
+
+// عند النقر على الزر
+installButton.addEventListener('click', async () => {
+  installButton.style.display = 'none';
+  deferredPrompt.prompt(); // إظهار نافذة التثبيت
+
+  const { outcome } = await deferredPrompt.userChoice;
+  console.log(`تم اختيار المستخدم: ${outcome}`);
+  deferredPrompt = null;
+});
+</script>
+</body>
+</html>
